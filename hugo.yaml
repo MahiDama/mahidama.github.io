@@ -1,5 +1,6 @@
+baseURL: "https://mahidama.github.io/"
 languageCode: "en-us"
-title: "Product Strategist & Builder"
+title: "Mahi Dama - Product Strategist & Builder"
 theme: "modern-minimal"
 params:
   author: "Mahi Dama"
