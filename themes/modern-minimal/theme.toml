@@ -1,0 +1,12 @@
+name = "modern-minimal"
+license = "MIT"
+licenselink = "https://github.com/mahidama/portfolio/blob/main/LICENSE"
+description = "Modern, minimal portfolio theme for builders. Dark theme with neon accents, optimized for GitHub Pages."
+homepage = "https://github.com/mahidama/portfolio"
+tags = ["portfolio", "minimal", "dark", "responsive", "github-pages"]
+features = ["responsive", "mobile", "dark-mode", "fast", "minimal"]
+min_version = "0.87.0"
+
+[author]
+name = "Your Name"
+homepage = "https://yourwebsite.com"

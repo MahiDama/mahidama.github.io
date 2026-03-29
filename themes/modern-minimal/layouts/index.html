@@ -1,0 +1,116 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="hero-title">
+            <span class="highlight-primary">Product Strategist</span>
+            <br/>by Trade.
+            <br/>
+            <span class="highlight-accent">Builder</span>
+            by Nature.
+        </h1>
+        <p class="hero-subtitle">
+            I am an efficient builder and influencer with an MBA and deep operational experience at Meta, Amazon, and Microsoft. I specialize in architecting complex programs—from developer infrastructure to AIOps. I operate at the intersection of technical precision and product intuition.
+        </p>
+        <p class="hero-tagline">
+            My mission: <strong>Velocity</strong>. I don't just plan for progress—I build it.
+        </p>
+        <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="/mentorship" class="btn btn-secondary">Book a Build-Check</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="code-block">
+            <div class="code-line"><span class="keyword">const</span> builder = <span class="string">"ship-it-first"</span></div>
+            <div class="code-line"><span class="keyword">while</span> (building) { <span class="comment">// always</span></div>
+            <div class="code-line">  <span class="function">velocity</span>++;</div>
+            <div class="code-line">}</div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects-section">
+    <div class="section-header">
+        <h2>Projects & Experiments</h2>
+        <p>Rapid prototypes built with AI. Shipped with precision.</p>
+    </div>
+
+    <div class="projects-grid">
+        {{ $projects := where .Site.RegularPages "Type" "projects" }}
+        {{ if $projects }}
+        {{ range $projects }}
+        <div class="project-card">
+                    <div class="project-status">{{ .Params.status }}</div>
+                    <h3>{{ .Title }}</h3>
+                    <p class="project-problem"><strong>Problem:</strong> {{ .Params.problem }}</p>
+                    <p class="project-build"><strong>Build:</strong> {{ .Params.build_desc }}</p>
+
+                    {{ if .Params.highlights }}            <div class="highlights">
+                {{ range .Params.highlights }}
+                <div class="highlight-item">
+                    <strong>{{ .title }}:</strong> {{ .description }}
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+
+            <div class="tech-stack">
+                {{ range .Params.technologies }}
+                <span class="tech-badge" data-tech="{{ . }}">{{ . }}</span>
+                {{ end }}
+            </div>
+
+            <div class="project-links">
+                {{ if .Params.github_link }}
+                <a href="{{ .Params.github_link }}" target="_blank" class="link-btn">→ View on GitHub</a>
+                {{ end }}
+                {{ if .Params.demo_link }}
+                <a href="{{ .Params.demo_link }}" target="_blank" class="link-btn">→ Live Demo</a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+        {{ else }}
+        <div class="coming-soon">
+            <p class="coming-soon-text">🚀 Upcoming projects coming soon. Stay tuned!</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+<section id="about" class="about-section">
+    <div class="section-header">
+        <h2>About This Builder</h2>
+    </div>
+    <div class="about-content">
+        <div class="about-text">
+            <p>
+                <strong>I execute at the intersection of strategy and engineering.</strong> With an MBA and deep tenure at Meta, Amazon, and Microsoft, I've led cross-functional teams through high-cognitive-load organizational challenges. My background spans:
+            </p>
+            <ul class="about-list">
+                <li><strong>Product Infrastructure:</strong> Developer tooling and platform architecture</li>
+                <li><strong>AI & Automation:</strong> Building with modern LLMs and AI-assisted development (Vibecoding)</li>
+                <li><strong>Rapid Prototyping:</strong> From idea to MVP in days, not months</li>
+                <li><strong>Developer Experience:</strong> Clear docs, clean code, open-source culture</li>
+            </ul>
+            <p>
+                <strong>Velocity is my north star.</strong> Whether building internal infrastructure, mentoring emerging engineers, or shipping public products, I measure success by how fast ideas become working software.
+            </p>
+        </div>
+        <div class="about-stats">
+            <div class="stat-card">
+                <span class="stat-number">3+</span>
+                <span class="stat-label">Tech Giants</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Shipped Projects</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">AI-First</span>
+                <span class="stat-label">Builder</span>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

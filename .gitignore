@@ -1,0 +1,7 @@
+*.log
+/.DS_Store
+/resources/
+/public/
+.env
+.env.local
+node_modules/

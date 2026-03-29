@@ -1,0 +1,21 @@
+languageCode: "en-us"
+title: "Product Strategist & Builder"
+theme: "modern-minimal"
+params:
+  author: "Mahi Dama"
+  description: "Product Strategist by Trade. Builder by Nature."
+  
+  # Colors for dark theme
+  primaryColor: "#00ff88"  # Neon green accent
+  backgroundColor: "#0a0e27"  # Dark navy
+  textColor: "#e0e0e0"  # Light gray
+  accentColor: "#ff006b"  # Neon pink for highlights
+
+markup:
+  highlight:
+    style: "monokai"
+
+outputs:
+  home:
+    - HTML
+    - JSON
