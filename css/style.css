@@ -164,6 +164,39 @@ body {
     max-width: 500px;
 }
 
+.hero-vibecoded {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.dynamic-underline {
+    position: relative;
+    color: var(--accent-primary);
+    font-weight: bold;
+}
+
+.dynamic-underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: drawUnderline 2s ease-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes drawUnderline {
+    to {
+        transform: scaleX(1);
+    }
+}
+
 .hero-tagline {
     font-size: 1rem;
     color: var(--text-secondary);

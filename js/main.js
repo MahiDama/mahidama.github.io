@@ -74,6 +74,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // TYPEWRITER EFFECT
+    const dynamicText = document.querySelector('.dynamic-text');
+    if (dynamicText) {
+        const words = JSON.parse(dynamicText.getAttribute('data-words'));
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 150;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            const displayedText = isDeleting 
+                ? currentWord.substring(0, charIndex--) 
+                : currentWord.substring(0, charIndex++);
+
+            dynamicText.textContent = displayedText;
+
+            if (!isDeleting && charIndex === currentWord.length + 1) {
+                isDeleting = true;
+                typeSpeed = 1000; // Pause at end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            } else {
+                typeSpeed = isDeleting ? 100 : 150;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        setTimeout(type, 1000);
+    }
+
     // Substack Slider logic
     initSubstackSlider();
 });
