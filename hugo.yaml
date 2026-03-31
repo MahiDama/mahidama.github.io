@@ -5,6 +5,9 @@ theme: "modern-minimal"
 params:
   author: "Mahi Dama"
   description: "Product Strategist by Trade. Builder by Nature."
+  email: "md4855@nyu.edu"
+  formspree_id: "xjkkaqwy"
+  maintenance_mode: false # Set to true to take the site down instantly # Temporary ID, you can update this later
   
   # Colors for dark theme
   primaryColor: "#00ff88"  # Neon green accent

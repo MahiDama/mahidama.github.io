@@ -1,32 +1,53 @@
 /* Main JavaScript for interactive features */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll already handled by HTML scroll-behavior
-    
-    // Form submission
-    const form = document.getElementById('mentorship-form');
-    if (form) {
-        form.addEventListener('submit', function(e) {
+    // CONTACT FORM SUBMISSION WITH RATE LIMITING
+    const contactForm = document.getElementById('contact-form');
+    const formStatus = document.getElementById('form-status');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
+
+            // RATE LIMITING: Check if user has submitted in the last 24 hours
+            const lastSubmission = localStorage.getItem('last_contact_submission');
+            const now = new Date().getTime();
+            const twentyFourHours = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+
+            if (lastSubmission && (now - lastSubmission < twentyFourHours)) {
+                const remainingTime = Math.ceil((twentyFourHours - (now - lastSubmission)) / (60 * 60 * 1000));
+                alert(`You've already sent a message recently. Please wait ${remainingTime} more hour(s) before sending another one. 🛡️`);
+                return;
+            }
+
+            const data = new FormData(contactForm);
             
-            const name = document.getElementById('name').value;
-            const linkedin = document.getElementById('linkedin').value;
-            const challenge = document.getElementById('challenge').value;
-            const email = document.getElementById('email').value;
-            
-            // Log or send to your backend (e.g., Formspree, Netlify Forms)
-            console.log({
-                name,
-                linkedin,
-                challenge,
-                email
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Record the submission time for rate limiting
+                    localStorage.setItem('last_contact_submission', new Date().getTime());
+                    
+                    contactForm.style.display = "none";
+                    formStatus.style.display = "block";
+                    contactForm.reset();
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            alert(data["errors"].map(error => error["message"]).join(", "));
+                        } else {
+                            alert("Oops! There was a problem submitting your form");
+                        }
+                    })
+                }
+            }).catch(error => {
+                alert("Oops! There was a problem submitting your form");
             });
-            
-            // Show feedback
-            alert(`Thanks ${name}! Redirecting to Calendly for booking...`);
-            
-            // Replace with your actual Calendly URL
-            window.location.href = 'https://calendly.com/mahidama';
         });
     }
     
@@ -34,12 +55,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const techBadges = document.querySelectorAll('.tech-badge');
     techBadges.forEach(badge => {
         badge.addEventListener('mouseenter', function() {
-            const tech = this.getAttribute('data-tech');
-            // Could add tooltip or icon display here
+            // Optional: tooltip logic
         });
     });
     
-    // Lazy load project images if any
+    // Intersection Observer for fade-in effects
     if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -49,27 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        document.querySelectorAll('.project-card').forEach(el => {
+        document.querySelectorAll('section').forEach(el => {
             observer.observe(el);
         });
     }
+
+    // Substack Slider logic
+    initSubstackSlider();
 });
 
-// Light analytics (optional - no external dependencies)
-function trackEvent(eventName) {
-    if (typeof gtag !== 'undefined') {
-        gtag('event', eventName);
-    }
-}
-
-// SUBSTACK RSS FEED FETCH & SLIDER
-document.addEventListener('DOMContentLoaded', () => {
+function initSubstackSlider() {
     const feedContainer = document.getElementById('substack-feed');
     if (!feedContainer) return;
 
-    // Substack RSS URL
     const RSS_URL = 'https://mahidama.substack.com/feed';
-    // Using a public RSS to JSON converter (rss2json.com) for client-side fetching
     const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}`;
 
     const prevBtn = document.getElementById('prev-slide');
@@ -84,13 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 posts.forEach(post => {
                     const date = new Date(post.pubDate).toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric',
-                        year: 'numeric'
+                        month: 'short', day: 'numeric', year: 'numeric'
                     });
                     
                     const cleanDescription = post.description
-                        .replace(/<[^>]*>/g, '') // Remove HTML tags
+                        .replace(/<[^>]*>/g, '')
                         .substring(0, 150) + '...';
 
                     const card = document.createElement('a');
@@ -110,12 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 initSlider();
             } else {
-                feedContainer.innerHTML = '<div class="loading-text">Unable to load blog posts. Please visit Substack directly.</div>';
+                feedContainer.innerHTML = '<div class="loading-text">Unable to load blog posts.</div>';
             }
-        })
-        .catch(err => {
-            console.error('Error fetching Substack feed:', err);
-            feedContainer.innerHTML = '<div class="loading-text">Error connecting to blog feed.</div>';
         });
 
     function initSlider() {
@@ -125,9 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateSlider = () => {
             const cards = document.querySelectorAll('.blog-card');
             if (cards.length === 0) return;
-            
             const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem
+            const gap = 32;
             const move = currentIndex * (cardWidth + gap);
             slider.style.transform = `translateX(-${move}px)`;
         };
@@ -138,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentIndex < cards.length - visibleCards) {
                 currentIndex++;
             } else {
-                currentIndex = 0; // Loop back
+                currentIndex = 0;
             }
             updateSlider();
         });
@@ -149,13 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (currentIndex > 0) {
                 currentIndex--;
             } else {
-                currentIndex = Math.max(0, cards.length - visibleCards); // Loop to end
+                currentIndex = Math.max(0, cards.length - visibleCards);
             }
             updateSlider();
         });
 
-        // Responsive handling
         window.addEventListener('resize', updateSlider);
     }
-});
-
+}

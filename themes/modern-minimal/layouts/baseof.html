@@ -9,34 +9,48 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="/" class="nav-logo">
+    <body>
+        {{ if .Site.Params.maintenance_mode }}
+        <div class="maintenance-container">
+            <div class="maintenance-content">
                 <span class="logo-symbol">▲</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="/#projects" class="nav-link">Projects</a></li>
-                <li><a href="/#blog" class="nav-link">Blog</a></li>
-                <li><a href="/#about" class="nav-link">About</a></li>
-                <li><a href="/mentorship" class="nav-link">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main>
-        {{ block "main" . }}{{ end }}
-    </main>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Product Strategist & Builder. Open source enthusiast.</p>
-            <div class="social-links">
-                <a href="https://github.com/{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub</a>
-                <a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+                <h1>Site Under Maintenance</h1>
+                <p>Due to suspected misuse, this site is temporarily unavailable. We'll be back online soon. 🛡️</p>
+                <div class="maintenance-meta">
+                    <p>&copy; 2024 Mahi Dama</p>
+                </div>
             </div>
         </div>
-    </footer>
+        {{ else }}
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="/" class="nav-logo">
+                    <span class="logo-symbol">▲</span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="/#projects" class="nav-link">Projects</a></li>
+                    <li><a href="/#blog" class="nav-link">Blog</a></li>
+                    <li><a href="/#about" class="nav-link">About</a></li>
+                    <li><a href="/#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-    <script src="/js/main.js"></script>
-</body>
+        <main>
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Product Strategist & Builder. Open source enthusiast.</p>
+                <div class="social-links">
+                    <a href="https://github.com/{{ .Site.Params.github }}" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://linkedin.com/in/{{ .Site.Params.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+                </div>
+            </div>
+        </footer>
+
+        <script src="/js/main.js"></script>
+        {{ end }}
+    </body>
 </html>
