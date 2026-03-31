@@ -7,13 +7,13 @@ params:
   description: "Product Strategist by Trade. Builder by Nature."
   email: "md4855@nyu.edu"
   formspree_id: "xjkkaqwy"
-  maintenance_mode: false # Set to true to take the site down instantly # Temporary ID, you can update this later
+  maintenance_mode: false
   
-  # Colors for dark theme
-  primaryColor: "#00ff88"  # Neon green accent
-  backgroundColor: "#0a0e27"  # Dark navy
-  textColor: "#e0e0e0"  # Light gray
-  accentColor: "#ff006b"  # Neon pink for highlights
+  # Soft Editorial Palette
+  primaryColor: "#A3B18A"  # Muted Sage
+  backgroundColor: "#FAF9F6"  # Warm Off-White
+  textColor: "#1F1F1F"  # Deep Charcoal
+  accentColor: "#E5E7EB"  # Light Border Grey
 
 markup:
   highlight:
