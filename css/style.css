@@ -813,3 +813,127 @@ body {
         padding: 1.5rem;
     }
 }
+
+/* BLOG SLIDER SECTION (Dark Theme) */
+.blog-section {
+    padding: 8rem 2rem;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, #0d1231 100%);
+}
+
+.substack-slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 4rem auto;
+    overflow: hidden;
+    padding: 2rem 0;
+}
+
+.substack-slider {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    gap: 2rem;
+}
+
+.blog-card {
+    min-width: calc(33.333% - 1.33rem);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.blog-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.blog-card p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-card .post-date {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-secondary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.slider-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.blog-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.loading-text {
+    width: 100%;
+    text-align: center;
+    padding: 4rem;
+    color: var(--accent-primary);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@media (max-width: 1024px) {
+    .blog-card {
+        min-width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .blog-card {
+        min-width: 100%;
+    }
+}
+
