@@ -147,7 +147,7 @@
     </div>
 
     <div class="contact-container">
-        <form action="https://formspree.io/{{ .Site.Params.email }}" method="POST" class="contact-form" id="contact-form">
+        <form action="https://formspree.io/f/{{ .Site.Params.formspree_id }}" method="POST" class="contact-form" id="contact-form">
             <input type="hidden" name="_next" value="{{ .Site.BaseURL }}#contact">
             <div class="form-row">
                 <div class="form-group">
