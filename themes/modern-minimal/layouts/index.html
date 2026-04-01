@@ -148,6 +148,7 @@
 
     <div class="contact-container">
         <form action="https://formspree.io/{{ .Site.Params.email }}" method="POST" class="contact-form" id="contact-form">
+            <input type="hidden" name="_next" value="{{ .Site.BaseURL }}#contact">
             <div class="form-row">
                 <div class="form-group">
                     <label for="first-name">First Name</label>
@@ -169,7 +170,7 @@
                 <textarea id="message" name="message" rows="6" placeholder="Tell me what's on your mind..." required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary">Send Message →</button>
+            <button type="submit" class="btn btn-secondary">Send Message →</button>
         </form>
         <div id="form-status" class="form-status" style="display: none;">
             <p>Thanks! I'll get in touch with you soon. ✨</p>
