@@ -465,6 +465,18 @@ section {
     width: 100%;
 }
 
+.form-status {
+    text-align: center;
+    padding: 2rem;
+}
+
+.form-status p {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-family: var(--font-heading);
+}
+
 /* Footer */
 .footer {
     padding: 1.5rem 0; /* Compact padding */
