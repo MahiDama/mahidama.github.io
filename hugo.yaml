@@ -8,6 +8,8 @@ params:
   email: "md4855@nyu.edu"
   formspree_id: "xgopygob"
   maintenance_mode: false
+  github: "MahiDama"
+  linkedin: "mahotsavy-dama-285b3432"
   
   # Soft Editorial Palette
   primaryColor: "#A3B18A"  # Muted Sage
