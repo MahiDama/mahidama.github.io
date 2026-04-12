@@ -194,7 +194,9 @@ Typical PageSpeed scores:
 
 ## License
 
-This template is open source. Feel free to fork and customize for your own portfolio.
+Copyright (c) 2026 Mahotsavy Dama. All rights reserved.
+
+This software and all associated files are the proprietary and confidential property of Mahotsavy Dama. Any unauthorized use, reproduction, or distribution is strictly prohibited. See the [LICENSE](LICENSE) file for full details.
 
 ## Support
 
