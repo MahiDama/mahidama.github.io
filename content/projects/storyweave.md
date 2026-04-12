@@ -3,7 +3,7 @@ title: "StoryWeave"
 draft: false
 status: "Launched | Prototype"
 problem: "Static digital storytelling lacks collaboration."
-build_desc: "AI-powered platform for real-time collaborative interactive stories."
+build_desc: "Less writer's block, more block party."
 github_link: "https://github.com/MahiDama/StoryWeaveIoS"
 demo_link: "https://story-weave-io-s.vercel.app/"
 technologies:
@@ -14,6 +14,6 @@ highlights:
   - title: "⚡ Velocity"
     description: "AI-assisted rapid prototyping."
   - title: "🎭 Narrative"
-    description: "Real-time AI co-authoring."
+    description: "Real-time Collaborative Storytelling"
 ---
 Minimalistic AI-powered collaborative storytelling.
