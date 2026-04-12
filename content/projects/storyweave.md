@@ -5,6 +5,7 @@ status: "Launched | Prototype"
 problem: "Static digital storytelling lacks collaboration."
 build_desc: "AI-powered platform for real-time collaborative interactive stories."
 github_link: "https://github.com/MahiDama/StoryWeaveIoS"
+demo_link: "https://story-weave-io-s.vercel.app/"
 technologies:
   - "🤖 Gemini AI"
   - "🟢 Node.js"
