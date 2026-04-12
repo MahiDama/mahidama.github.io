@@ -2,47 +2,6 @@
 
 A modern, ultra-fast portfolio website built with Hugo for GitHub Pages. Features project showcases, mentorship booking, and a developer-focused aesthetic.
 
-## Quick Start
-
-### Prerequisites
-- [Hugo](https://gohugo.io/installation/) (v0.87.0 or higher)
-- Git
-- A GitHub account
-
-### Local Development
-
-1. **Clone the repository**
-   ```bash
-   git clone <your-repo>
-   cd ProfessionalWebsite
-   ```
-
-2. **Start the Hugo development server**
-   ```bash
-   hugo server -D
-   ```
-   Visit `http://localhost:1313` in your browser
-
-3. **Edit content**
-   - Update `content/_index.md` for home page
-   - Add projects in `content/projects/`
-   - Edit `hugo.yaml` for site configuration
-
-### Deploy to GitHub Pages
-
-1. **Create a GitHub repository** named `mahidama.github.io`
-
-2. **Push to GitHub**
-   ```bash
-   git remote add origin https://github.com/mahidama/mahidama.github.io.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. **GitHub Actions will automatically build and deploy**
-   - The `deploy.yml` workflow runs on every push
-   - Your site will be live at `https://mahidama.github.io`
-
 ## Customization
 
 ### Site Configuration (`hugo.yaml`)
