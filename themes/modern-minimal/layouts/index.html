@@ -38,45 +38,51 @@
         <p>Rapid prototypes built with AI. Shipped with precision.</p>
     </div>
 
-    <div class="projects-grid">
-        {{ $projects := where (where .Site.RegularPages "Type" "projects") "Draft" false }}
-        {{ if $projects }}
-        {{ range $projects }}
-        <div class="project-card">
-            <div class="project-status">{{ .Params.status }}</div>
-            <h3>{{ .Title }}</h3>
-            <p class="project-problem"><strong>Problem:</strong> {{ .Params.problem }}</p>
-            <p class="project-build"><strong>Build:</strong> {{ .Params.build_desc }}</p>
+    <div class="projects-slider-container">
+        <div class="projects-slider">
+            {{ $projects := where (where .Site.RegularPages "Type" "projects") "Draft" false }}
+            {{ if $projects }}
+            {{ range $projects }}
+            <div class="project-card">
+                <div class="project-status">{{ .Params.status }}</div>
+                <h3>{{ .Title }}</h3>
+                <p class="project-problem"><strong>Problem:</strong> {{ .Params.problem }}</p>
+                <p class="project-build"><strong>Build:</strong> {{ .Params.build_desc }}</p>
 
-            {{ if .Params.highlights }}
-            <div class="highlights">
-                {{ range .Params.highlights }}
-                <div class="highlight-item">
-                    <strong>{{ .title }}:</strong> {{ .description }}
+                {{ if .Params.highlights }}
+                <div class="highlights">
+                    {{ range .Params.highlights }}
+                    <div class="highlight-item">
+                        <strong>{{ .title }}:</strong> {{ .description }}
+                    </div>
+                    {{ end }}
                 </div>
                 {{ end }}
+
+                <div class="tech-stack">
+                    {{ range .Params.technologies }}
+                    <span class="tech-badge" data-tech="{{ . }}">{{ . }}</span>
+                    {{ end }}
+                </div>
+
+                <div class="project-links">
+                    {{ if .Params.github_link }}
+                    <a href="{{ .Params.github_link }}" target="_blank" class="link-btn">→ View on GitHub</a>
+                    {{ end }}
+                    {{ if .Params.demo_link }}
+                    <a href="{{ .Params.demo_link }}" target="_blank" class="link-btn">→ Live Demo</a>
+                    {{ end }}
+                </div>
             </div>
             {{ end }}
-
-            <div class="tech-stack">
-                {{ range .Params.technologies }}
-                <span class="tech-badge" data-tech="{{ . }}">{{ . }}</span>
-                {{ end }}
-            </div>
-
-            <div class="project-links">
-                {{ if .Params.github_link }}
-                <a href="{{ .Params.github_link }}" target="_blank" class="link-btn">→ View on GitHub</a>
-                {{ end }}
-                {{ if .Params.demo_link }}
-                <a href="{{ .Params.demo_link }}" target="_blank" class="link-btn">→ Live Demo</a>
-                {{ end }}
+            {{ end }}
+            <div class="project-card coming-soon-card">
+                <p class="coming-soon-text">🚀 Upcoming projects coming soon. Stay tuned!</p>
             </div>
         </div>
-        {{ end }}
-        {{ end }}
-        <div class="project-card coming-soon-card">
-            <p class="coming-soon-text">🚀 Upcoming projects coming soon. Stay tuned!</p>
+        <div class="slider-controls project-slider-controls">
+            <button id="prev-project" class="slider-btn" aria-label="Previous project">←</button>
+            <button id="next-project" class="slider-btn" aria-label="Next project">→</button>
         </div>
     </div>
 </section>
