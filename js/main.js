@@ -108,9 +108,55 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(type, 1000);
     }
 
+    // Project Slider logic
+    initProjectSlider();
+
     // Substack Slider logic
     initSubstackSlider();
 });
+
+function initProjectSlider() {
+    const slider = document.querySelector('.projects-slider');
+    if (!slider) return;
+
+    const prevBtn = document.getElementById('prev-project');
+    const nextBtn = document.getElementById('next-project');
+    const cards = Array.from(slider.querySelectorAll('.project-card'));
+
+    if (!cards.length || !prevBtn || !nextBtn) return;
+
+    let currentIndex = 0;
+
+    const updateSlider = () => {
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 32;
+        const move = currentIndex * (cardWidth + gap);
+        slider.style.transform = `translateX(-${move}px)`;
+    };
+
+    nextBtn.addEventListener('click', () => {
+        const visibleCards = window.innerWidth > 1024 ? 3 : (window.innerWidth > 768 ? 2 : 1);
+        if (currentIndex < cards.length - visibleCards) {
+            currentIndex++;
+        } else {
+            currentIndex = 0;
+        }
+        updateSlider();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        const visibleCards = window.innerWidth > 1024 ? 3 : (window.innerWidth > 768 ? 2 : 1);
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = Math.max(0, cards.length - visibleCards);
+        }
+        updateSlider();
+    });
+
+    window.addEventListener('resize', updateSlider);
+    updateSlider();
+}
 
 function initSubstackSlider() {
     const feedContainer = document.getElementById('substack-feed');
